@@ -13,6 +13,9 @@ public class StudentManagement5Application {
     SpringApplication.run(StudentManagement5Application.class, args);
   }
 
+  
+
+
   @GetMapping("/Name")
   public String name() {
     return "watasinonamaeha,taroudesu.";

@@ -1,23 +1,17 @@
 package raisetech5.StudentManagement5;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Student {
 
-  private String name;
-  private int age;
+  private String id;
+  private String student_id;
+  private String coursName;
+  private String start_date;
+  private String end_date;
 
-  public String getName() {
-    return name;
-  }
 
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public int getAge() {
-    return age;
-  }
-
-  public void setAge(int age) {
-    this.age = age;
-  }
 }

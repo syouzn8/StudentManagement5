@@ -8,6 +8,10 @@
 <h1>受講生詳細</h1>
 <form th:action="@{/updateStudent}" th:object="${studentDetail}" method="post">
   <div>
+    <label for="id">ID:</label>
+    <input type="text" id="id" th:field="*{student.id}" required />
+  </div>
+  <div>
     <label for="name">名前:</label>
     <input type="text" id="name" th:field="*{student.name}" required />
   </div>
@@ -39,11 +43,17 @@
     <label for="remark">備考:</label>
     <input type="text" id="remark" th:field="*{student.remark}"  />
   </div>
-  <div th:each="course, stat : *{studentsCourses}">
-    <label for="coursName">受講コース名：</label>
-    <input type="text" id="coursName" th:id="studentCourse.__${stat.index}__.coursName" th:field="*{studentsCourses[__${stat.index}__].coursName}" />
+  <div th:each="cours, stat : *{studentsCourses}">
+    <label for="id"
+           th:for="studentCourse.__${stat.index}__.id">受講コースID：</label>
+    <input type="text" id="id" th:id="studentCourse.__${stat.index}__.id"
+           th:field="*{studentsCourses[__${stat.index}__].id}" />
+
+    <label for="coursName"
+           th:for="studentCourse.__${stat.index}__.coursName">受講コース名：</label>
+    <input type="text" id="coursName" th:id="studentCourse.__${stat.index}__.coursName"
+           th:field="*{studentsCourses[__${stat.index}__].coursName}" />
   </div>
-  <div>
     <button type="submit">更新</button>
   </div>
 

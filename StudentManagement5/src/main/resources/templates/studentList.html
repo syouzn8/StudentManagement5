@@ -23,8 +23,9 @@
   <tbody>
   <tr th:each="studentDetail : ${studentList}">
     <td th:text="${studentDetail.student.id}">001</td>
-    <td th:text="${studentDetail.student.name}">
-      <a href="/studentList" th:href="@{/student/{id}(id=${studentDetail.student.id})}" th:text="${studentDetail.student.name}">JiroSuzuki</a>
+    <td>
+      <a href="/studentList" th:href="@{/student/{id}(id=${studentDetail.student.id})}"
+         th:text="${studentDetail.student.name}">JiroSuzuki</a>
     </td>
     <td th:text="${studentDetail.student.nickname}">Jiro</td>
     <td th:text="${studentDetail.student.email}">jiro@example.com</td>

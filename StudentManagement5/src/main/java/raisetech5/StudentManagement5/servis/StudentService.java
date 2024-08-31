@@ -2,7 +2,6 @@ package raisetech5.StudentManagement5.servis;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,7 +27,16 @@ public class StudentService {
 
 
   public List<StudentsCourses> searchStudentsCourseList() {
-    return repository.searchStudentsCourses();
+    return repository.searchStudentsCoursesList();
+  }
+
+  public StudentDetail searchStudent(String id) {
+  Student student = repository.searchStudent(id);
+  List<StudentsCourses> studentsCourses = repository.searchStudentsCourses(student.getId());
+  StudentDetail studentDetail = new StudentDetail();
+  studentDetail.setStudent(student);
+  studentDetail.setStudentsCourses(studentsCourses);
+  return studentDetail;
   }
 
   @Transactional
@@ -41,7 +49,13 @@ public class StudentService {
       repository.registerStudentsCourses(studentsCourses);
     }
   }
+    @Transactional
+    public void updateStudent (StudentDetail studentDetail) {
+      repository.updateStudent(studentDetail.getStudent());
+      for (StudentsCourses studentsCourses : studentDetail.getStudentsCourses()) {
+        repository.updateStudentsCourses(studentsCourses);
+      }
+    }
 
 
-
-}
+  }

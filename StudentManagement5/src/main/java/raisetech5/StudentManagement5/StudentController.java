@@ -37,7 +37,7 @@ public class StudentController {
 
 
   @GetMapping("/newStudent")
-  public String newStudent(Model model){
+  public String newStudent(Model model) {
     StudentDetail studentDetail = new StudentDetail();
     studentDetail.setStudentsCourses(Arrays.asList(new StudentsCourses()));
     model.addAttribute("studentDetail", studentDetail);
@@ -46,8 +46,8 @@ public class StudentController {
 
 
   @PostMapping("/registerStudent")
-  public String registerStudent(@ModelAttribute StudentDetail studentDetail , BindingResult result) {
-    if(result.hasErrors()){
+  public String registerStudent(@ModelAttribute StudentDetail studentDetail, BindingResult result) {
+    if (result.hasErrors()) {
       return "registerStudent";
     }
     service.registerStudent(studentDetail);
@@ -56,7 +56,7 @@ public class StudentController {
 
 
   @GetMapping("/student/{id}")
-  public String getStudent(@PathVariable String id , Model model){
+  public String getStudent(@PathVariable String id, Model model) {
     StudentDetail studentDetail = service.searchStudent(id);
     model.addAttribute("studentDetail", studentDetail);
     return "updateStudent";
@@ -64,8 +64,8 @@ public class StudentController {
 
 
   @PostMapping("/updateStudent")
-  public String updateStudent(@ModelAttribute StudentDetail studentDetail , BindingResult result) {
-    if(result.hasErrors()){
+  public String updateStudent(@ModelAttribute StudentDetail studentDetail, BindingResult result) {
+    if (result.hasErrors()) {
       return "updateStudent";
     }
     service.updateStudent(studentDetail);

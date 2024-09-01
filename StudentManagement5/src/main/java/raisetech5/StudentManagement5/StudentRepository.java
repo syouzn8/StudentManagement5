@@ -36,10 +36,10 @@ public interface StudentRepository {
   void registerStudentsCourses(StudentsCourses studentsCourses);
 
 
-@Update("UPDATE students SET name = #{name}, nickname = #{nickname},email = #{email} ,"
-    + " town = #{town}, age = #{age}, gender = #{gender}, furigana = #{furigana}, remark = #{remark}, is_deleted = #{isDeleted} WHERE id = #{id}")
-void updateStudent(Student student);
+  @Update("UPDATE students SET name = #{name}, nickname = #{nickname},email = #{email} ,"
+      + " town = #{town}, age = #{age}, gender = #{gender}, furigana = #{furigana}, remark = #{remark}, is_deleted = #{isDeleted} WHERE id = #{id}")
+  void updateStudent(Student student);
 
-@Update("UPDATE students_courses SET coursName = #{coursName} WHERE id = #{id}")
-void updateStudentsCourses(StudentsCourses studentsCourses);
+  @Update("UPDATE students_courses SET coursName = #{coursName} WHERE id = #{id}")
+  void updateStudentsCourses(StudentsCourses studentsCourses);
 }

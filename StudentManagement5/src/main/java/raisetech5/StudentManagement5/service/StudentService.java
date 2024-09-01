@@ -31,12 +31,12 @@ public class StudentService {
   }
 
   public StudentDetail searchStudent(String id) {
-  Student student = repository.searchStudent(id);
-  List<StudentsCourses> studentsCourses = repository.searchStudentsCourses(student.getId());
-  StudentDetail studentDetail = new StudentDetail();
-  studentDetail.setStudent(student);
-  studentDetail.setStudentsCourses(studentsCourses);
-  return studentDetail;
+    Student student = repository.searchStudent(id);
+    List<StudentsCourses> studentsCourses = repository.searchStudentsCourses(student.getId());
+    StudentDetail studentDetail = new StudentDetail();
+    studentDetail.setStudent(student);
+    studentDetail.setStudentsCourses(studentsCourses);
+    return studentDetail;
   }
 
   @Transactional
@@ -49,13 +49,14 @@ public class StudentService {
       repository.registerStudentsCourses(studentsCourses);
     }
   }
-    @Transactional
-    public void updateStudent (StudentDetail studentDetail) {
-      repository.updateStudent(studentDetail.getStudent());
-      for (StudentsCourses studentsCourses : studentDetail.getStudentsCourses()) {
-        repository.updateStudentsCourses(studentsCourses);
-      }
+
+  @Transactional
+  public void updateStudent(StudentDetail studentDetail) {
+    repository.updateStudent(studentDetail.getStudent());
+    for (StudentsCourses studentsCourses : studentDetail.getStudentsCourses()) {
+      repository.updateStudentsCourses(studentsCourses);
     }
-
-
   }
+
+
+}

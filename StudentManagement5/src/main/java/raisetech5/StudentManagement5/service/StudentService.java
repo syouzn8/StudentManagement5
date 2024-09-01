@@ -1,4 +1,4 @@
-package raisetech5.StudentManagement5.servis;
+package raisetech5.StudentManagement5.service;
 
 import java.time.LocalDateTime;
 import java.util.List;

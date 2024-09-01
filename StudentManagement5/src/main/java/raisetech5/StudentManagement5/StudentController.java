@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import raisetech5.StudentManagement5.repositoly.Student;
 import raisetech5.StudentManagement5.repositoly.StudentsCourses;
-import raisetech5.StudentManagement5.servis.StudentService;
+import raisetech5.StudentManagement5.service.StudentService;
 
 @Controller
 public class StudentController {

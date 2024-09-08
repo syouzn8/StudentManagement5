@@ -1,4 +1,4 @@
-package raisetech5.StudentManagement5.repositoly;
+package raisetech5.StudentManagement5.data;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -19,7 +19,6 @@ public class Student {
   private boolean isDeleted;
 
 
-//13.55
 
 
 }

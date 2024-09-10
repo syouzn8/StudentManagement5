@@ -1,4 +1,4 @@
-package raisetech5.StudentManagement5.repositoly;
+package raisetech5.StudentManagement5.data;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -17,7 +17,6 @@ public class Student {
   private String furigana;
   private String remark;
   private boolean isDeleted;
-
 
 
 

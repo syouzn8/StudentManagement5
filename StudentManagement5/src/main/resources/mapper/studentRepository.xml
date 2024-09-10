@@ -14,14 +14,54 @@
     SELECT * FROM students WHERE id = #{id}
 
   </select>
-
-  <select id="searchStudentCourseList" resultType="raisetech5.StudentManagement5.data.StudentCourse">
+  <!-- 受講生コース情報の全件検索-->
+  <select id="searchStudentCourseList"
+    resultType="raisetech5.StudentManagement5.data.StudentCourse">
     SELECT * FROM students_courses
 
   </select>
-
+  <!-- -->
+  <!--　受講生コース情報の検索 -->
   <select id="searchStudentCourse" resultType="raisetech5.StudentManagement5.data.StudentCourse">
     SELECT * FROM students_courses WHERE student_id = #{studentId}
 
   </select>
+
+  <!-- 学生を登録する -->
+  <insert id="registerStudent" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO students (name, nickname, email, town, age, gender, furigana, remark, isDeleted)
+    VALUES (#{name}, #{nickname}, #{email}, #{town}, #{age}, #{gender}, #{furigana}, #{remark},
+    false)
+  </insert>
+
+  <!-- 学生のコースを登録する -->
+  <insert id="registerStudentCourse" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO students_courses (student_id, coursName, start_date, end_date)
+    VALUES (#{student_id}, #{coursName}, #{start_date}, #{end_date})
+  </insert>
+
+  <!-- 学生情報を更新する -->
+  <update id="updateStudent">
+    UPDATE students
+    SET
+    name = #{name},
+    nickname = #{nickname},
+    email = #{email},
+    town = #{town},
+    age = #{age},
+    gender = #{gender},
+    furigana = #{furigana},
+    remark = #{remark},
+    isDeleted = #{isDeleted}
+    WHERE id = #{id}
+  </update>
+
+  <!-- 学生のコース情報を更新する -->
+  <update id="updateStudentCourse">
+    UPDATE students_courses
+    SET coursName = #{coursName}
+    WHERE id = #{id}
+  </update>
+
+
 </mapper>

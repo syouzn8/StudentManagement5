@@ -1,4 +1,4 @@
-package raisetech5.StudentManagement5;
+package raisetech5.StudentManagement5.controller.converter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 import raisetech5.StudentManagement5.data.Student;
 import raisetech5.StudentManagement5.data.StudentCourse;
+import raisetech5.StudentManagement5.domain.StudentDetail;
 
 /**
  *　受講生詳細を受講生や受講生コース情報、もしくはその逆を行うこんばーたーです。

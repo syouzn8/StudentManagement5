@@ -1,8 +1,6 @@
-package raisetech5.StudentManagement5.controller.converter;
+package raisetech5.StudentManagement5.kadaiii;
 
 import org.springframework.stereotype.Component;
-import raisetech5.StudentManagement5.kadaiii.CustomException;
-import raisetech5.StudentManagement5.kadaiii.ExceptionThrower;
 
 @Component
 public class CustomExceptionHandler {

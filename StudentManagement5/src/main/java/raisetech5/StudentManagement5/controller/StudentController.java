@@ -1,6 +1,5 @@
 package raisetech5.StudentManagement5.controller;
 
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -18,7 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import raisetech5.StudentManagement5.controller.converter.CustomExceptionHandler;
+import raisetech5.StudentManagement5.kadaiii.CustomExceptionHandler;
 import raisetech5.StudentManagement5.domain.StudentDetail;
 import raisetech5.StudentManagement5.exception.TestException;
 import raisetech5.StudentManagement5.service.StudentService;
@@ -39,6 +38,7 @@ public class StudentController {
     this.customExceptionHandler = customExceptionHandler;
   }
 
+  @Operation(summary = "例外処理のテスト", description = "例外処理が正しく機能するかテストします。")
   @GetMapping("/test-exception")
   public String testExceptionHandling() {
     customExceptionHandler.handleException();  // 名前を変更
@@ -76,7 +76,7 @@ public class StudentController {
    * @param id　受講生ID
    * @return　受講生
    */
-
+  @Operation(summary = "受講生登録", description = "IDに紐づく受講生を習得します")
   @GetMapping("/student/{id}")
   public StudentDetail getStudent
   (@PathVariable @Size(min = 1,max = 3) @NotBlank @Pattern(regexp = "^\\d+$") String id){
@@ -88,12 +88,13 @@ public class StudentController {
    * @param studentDetail　受講生詳細
    * @return　実行結果
    */
+  @Operation(summary = "受講生を更新やキャンセル", description = "受講生を更新したりキャンセルしたりします")
   @PutMapping("/updateStudent")
   public ResponseEntity<String> updateStudent(@RequestBody StudentDetail studentDetail) {
     service.updateStudent(studentDetail);
     return ResponseEntity.ok("更新処理が成功しました。");
   }
-
+  @Operation(summary = "例外処理" , description = "例外処理を実行します")
   @ExceptionHandler(TestException.class)
   public  ResponseEntity<String> handleTestException(TestException ex) {
     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());

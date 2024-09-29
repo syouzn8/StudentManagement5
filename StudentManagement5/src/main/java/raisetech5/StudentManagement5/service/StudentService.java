@@ -62,10 +62,9 @@ public class StudentService {
    */
   @Transactional
   public StudentDetail registerStudent(StudentDetail studentDetail) {
-    //準備
+
     Student student = studentDetail.getStudent();
 
-    //やりたいことをやる
     repository.registerStudent(student);
     studentDetail.getStudentCourseList().forEach(studentCourse -> {
       initStudentsCourse(studentCourse, student);

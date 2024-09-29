@@ -1,20 +1,25 @@
 package raisetech5.StudentManagement5.service;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import raisetech5.StudentManagement5.controller.StudentController;
 import raisetech5.StudentManagement5.controller.converter.StudentConverter;
 import raisetech5.StudentManagement5.data.Student;
 import raisetech5.StudentManagement5.data.StudentCourse;
@@ -32,11 +37,17 @@ class StudentServiceTest {
 
   private StudentService sut;
 
+  @InjectMocks
+  private StudentService service;
+
   @BeforeEach
   void before(){
     sut = new StudentService(repository, converter);
-
   }
+  @BeforeEach
+  void setUp() {
+  }
+
 
   @Test
   void 受講生詳細の一覧検索_リポジトリとコンバーターの処理が適切に呼び出せていること() {
@@ -56,9 +67,30 @@ class StudentServiceTest {
     verify(converter, times(1)).convertStudentDetails(test, studentCourseList);
   }
   @Test
-  void 受講生詳細検索() {
+  void 受講生詳細検索_リポジトリの処理が適切に呼び出せていること() {
+    Student student = new Student();
+    student.setId(String.valueOf(1L));
+    student.setName("佐野太郎");
 
+    StudentCourse course1 = new StudentCourse();
+    course1.setStudent_id(String.valueOf(101L));
 
+    StudentCourse course2 = new StudentCourse();
+    course2.setStudent_id(String.valueOf(102L));
 
+    StudentDetail studentDetail = new StudentDetail();
+    studentDetail.setStudent(student);
+    studentDetail.setStudentCourseList(Arrays.asList(course1, course2));
+
+    doNothing().when(repository).registerStudent(any(Student.class));
+    doNothing().when(repository).registerStudentCourse(any(StudentCourse.class));
+
+    StudentDetail result = service.registerStudent(studentDetail);
+
+    verify(repository, times(1)).registerStudent(student);
+    verify(repository, times(2)).registerStudentCourse(any(StudentCourse.class));
+
+    assertNotNull(result);
+    assertEquals(studentDetail, result);
   }
 }

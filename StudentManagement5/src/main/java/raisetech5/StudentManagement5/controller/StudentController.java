@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import raisetech5.StudentManagement5.kadaiii.CustomExceptionHandler;
 import raisetech5.StudentManagement5.domain.StudentDetail;
 import raisetech5.StudentManagement5.exception.TestException;
 import raisetech5.StudentManagement5.service.StudentService;
@@ -29,20 +28,12 @@ import raisetech5.StudentManagement5.service.StudentService;
 @RestController
 public class StudentController {
 
-  private final StudentService service;
-  private final CustomExceptionHandler customExceptionHandler;  // 名前を変更
+  private  StudentService service;
 
   @Autowired
-  public StudentController(StudentService service, CustomExceptionHandler customExceptionHandler) {
+  public StudentController(StudentService service) {
     this.service = service;
-    this.customExceptionHandler = customExceptionHandler;
-  }
 
-  @Operation(summary = "例外処理のテスト", description = "例外処理が正しく機能するかテストします。")
-  @GetMapping("/test-exception")
-  public String testExceptionHandling() {
-    customExceptionHandler.handleException();  // 名前を変更
-    return "例外処理が実行されました!!";
   }
 
   /**
@@ -52,8 +43,8 @@ public class StudentController {
    */
   @Operation(summary ="一覧検索", description = "受講生の一覧を検索します。")
   @GetMapping("/studentList")
-  public List<StudentDetail> getStudentList() throws TestException {
-    throw new TestException("エラー発生しました");
+  public List<StudentDetail> getStudentList(){
+    return service.searchStudentList();
   }
 
   /**

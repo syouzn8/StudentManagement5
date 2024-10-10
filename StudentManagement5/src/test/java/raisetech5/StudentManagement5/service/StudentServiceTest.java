@@ -19,6 +19,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 import raisetech5.StudentManagement5.controller.StudentController;
 import raisetech5.StudentManagement5.controller.converter.StudentConverter;
 import raisetech5.StudentManagement5.data.Student;
@@ -60,11 +62,10 @@ class StudentServiceTest {
 
     sut.searchStudentList();
 
-    List<Student> test = List.of(new Student());
 
     verify(repository, times(1)).search();
     verify(repository, times(1)).searchStudentCourseList();
-    verify(converter, times(1)).convertStudentDetails(test, studentCourseList);
+    verify(converter, times(1)).convertStudentDetails(studentList, studentCourseList);
   }
   @Test
   void 受講生詳細検索_リポジトリの処理が適切に呼び出せていること() {
@@ -93,4 +94,33 @@ class StudentServiceTest {
     assertNotNull(result);
     assertEquals(studentDetail, result);
   }
-}
+
+  @Test
+  void 受講生詳細の更新_studentDetailの処理が適切に呼び出せていること(){
+        Student student = new Student();
+        student.setId(String.valueOf(1L));
+        student.setName("John Doe");
+
+        StudentCourse course1 = new StudentCourse();
+        course1.setId(String.valueOf(101L));
+        course1.setCoursName("Math");
+
+        StudentCourse course2 = new StudentCourse();
+        course2.setId(String.valueOf(102L));
+        course2.setCoursName("Science");
+
+        StudentDetail studentDetail = new StudentDetail();
+        studentDetail.setStudent(student);
+        studentDetail.setStudentCourseList(Arrays.asList(course1, course2));
+
+        doNothing().when(repository).updateStudent(student);
+        doNothing().when(repository).updateStudentCourse(course1);
+        doNothing().when(repository).updateStudentCourse(course2);
+
+        StudentService.updateStudent(studentDetail);
+
+        verify(repository, times(1)).updateStudent(student);
+        verify(repository, times(1)).updateStudentCourse(course1);
+        verify(repository, times(1)).updateStudentCourse(course2);
+      }
+    }

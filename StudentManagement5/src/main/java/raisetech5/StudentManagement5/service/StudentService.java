@@ -18,7 +18,7 @@ import raisetech5.StudentManagement5.data.StudentCourse;
 @Service
 public class StudentService {
 
-  private StudentRepository repository;
+  private static StudentRepository repository;
   private StudentConverter converter;
 
 
@@ -92,7 +92,7 @@ public class StudentService {
    * @param studentDetail　受講生詳細
    */
   @Transactional
-  public void updateStudent (StudentDetail studentDetail) {
+  public static void updateStudent(StudentDetail studentDetail) {
     repository.updateStudent(studentDetail.getStudent());
     studentDetail.getStudentCourseList()
         .forEach(studentCourse -> repository.updateStudentCourse(studentCourse));

@@ -43,7 +43,6 @@ public class Student {
   private boolean isDeleted;
 
 
-
-
 }
+
 

@@ -100,7 +100,7 @@ public class StudentControllerTest {
 
 
   @Test
-  void 受講生詳細の受講生で() throws Exception {
+  void 受講生詳細の登録が実行できて空で返ってくること() throws Exception {
     mockMvc.perform(post("/registerStudent")
             .contentType(MediaType.APPLICATION_JSON)
             .content("{}"))
@@ -109,7 +109,7 @@ public class StudentControllerTest {
     verify(service, times(1)).registerStudent(any(StudentDetail.class));
   }
   @Test
-  void 受講生詳細の() throws Exception {
+  void 受講生詳細の検索が実行できて空で返ってくること() throws Exception {
     String studentId = "123";
 
     mockMvc.perform(MockMvcRequestBuilders.get("/student/{id}", studentId))
@@ -119,7 +119,7 @@ public class StudentControllerTest {
   }
 
   @Test
-  void testUpdateStudent() throws Exception {
+  void 受講生詳細の更新が実行できて空で返ってくること() throws Exception {
     mockMvc.perform(put("/updateStudent")
             .contentType(MediaType.APPLICATION_JSON)
             .content(

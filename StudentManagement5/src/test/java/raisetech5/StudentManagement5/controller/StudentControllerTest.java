@@ -154,5 +154,6 @@ public class StudentControllerTest {
     verify(service, times(1)).updateStudent(any(StudentDetail.class));
   }
 
+
 }
 

@@ -43,9 +43,10 @@ class StudentServiceTest {
   private StudentService service;
 
   @BeforeEach
-  void before(){
+  void before() {
     sut = new StudentService(repository, converter);
   }
+
   @BeforeEach
   void setUp() {
   }
@@ -62,11 +63,11 @@ class StudentServiceTest {
 
     sut.searchStudentList();
 
-
     verify(repository, times(1)).search();
     verify(repository, times(1)).searchStudentCourseList();
     verify(converter, times(1)).convertStudentDetails(studentList, studentCourseList);
   }
+
   @Test
   void 受講生詳細検索_リポジトリの処理が適切に呼び出せていること() {
     Student student = new Student();
@@ -96,31 +97,31 @@ class StudentServiceTest {
   }
 
   @Test
-  void 受講生詳細の更新_studentDetailの処理が適切に呼び出せていること(){
-        Student student = new Student();
-        student.setId(String.valueOf(1L));
-        student.setName("John Doe");
+  void 受講生詳細の更新_studentDetailの処理が適切に呼び出せていること() {
+    Student student = new Student();
+    student.setId(String.valueOf(1L));
+    student.setName("John Doe");
 
-        StudentCourse course1 = new StudentCourse();
-        course1.setId(String.valueOf(101L));
-        course1.setCoursName("Math");
+    StudentCourse course1 = new StudentCourse();
+    course1.setId(String.valueOf(101L));
+    course1.setCoursName("Math");
 
-        StudentCourse course2 = new StudentCourse();
-        course2.setId(String.valueOf(102L));
-        course2.setCoursName("Science");
+    StudentCourse course2 = new StudentCourse();
+    course2.setId(String.valueOf(102L));
+    course2.setCoursName("Science");
 
-        StudentDetail studentDetail = new StudentDetail();
-        studentDetail.setStudent(student);
-        studentDetail.setStudentCourseList(Arrays.asList(course1, course2));
+    StudentDetail studentDetail = new StudentDetail();
+    studentDetail.setStudent(student);
+    studentDetail.setStudentCourseList(Arrays.asList(course1, course2));
 
-        doNothing().when(repository).updateStudent(student);
-        doNothing().when(repository).updateStudentCourse(course1);
-        doNothing().when(repository).updateStudentCourse(course2);
+    doNothing().when(repository).updateStudent(student);
+    doNothing().when(repository).updateStudentCourse(course1);
+    doNothing().when(repository).updateStudentCourse(course2);
 
-        StudentService.updateStudent(studentDetail);
+    StudentService.updateStudent(studentDetail);
 
-        verify(repository, times(1)).updateStudent(student);
-        verify(repository, times(1)).updateStudentCourse(course1);
-        verify(repository, times(1)).updateStudentCourse(course2);
-      }
-    }
+    verify(repository, times(1)).updateStudent(student);
+    verify(repository, times(1)).updateStudentCourse(course1);
+    verify(repository, times(1)).updateStudentCourse(course2);
+  }
+}

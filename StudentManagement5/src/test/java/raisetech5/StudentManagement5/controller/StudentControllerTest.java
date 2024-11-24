@@ -108,6 +108,7 @@ public class StudentControllerTest {
 
     verify(service, times(1)).registerStudent(any(StudentDetail.class));
   }
+
   @Test
   void 受講生詳細の検索が実行できて空で返ってくること() throws Exception {
     String studentId = "123";
@@ -124,29 +125,29 @@ public class StudentControllerTest {
             .contentType(MediaType.APPLICATION_JSON)
             .content(
                 """
-                   {
-                       "student": {
-                           "id": "23",
-                           "name": "佐野",
-                           "nickname": "sasaサ",
-                           "email": "sano@example.com",
-                           "town": "東京",
-                           "gender": "男",
-                           "age": 34,
-                           "furigana": "サノエイジ",
-                           "remark": ""
-                       },
-                       "studentCourseList" : [
-                           {
+                       {
+                           "student": {
                                "id": "23",
-                               "student_id": "12",
-                               "coursName": "Javaコース",
-                               "start_date": "2024-09-01 00:00:00",
-                               "end_date": "2025-01-15 00:00:00"
-                           }
-                       ]
-                    }
-                """
+                               "name": "佐野",
+                               "nickname": "sasaサ",
+                               "email": "sano@example.com",
+                               "town": "東京",
+                               "gender": "男",
+                               "age": 34,
+                               "furigana": "サノエイジ",
+                               "remark": ""
+                           },
+                           "studentCourseList" : [
+                               {
+                                   "id": "23",
+                                   "student_id": "12",
+                                   "coursName": "Javaコース",
+                                   "start_date": "2024-09-01 00:00:00",
+                                   "end_date": "2025-01-15 00:00:00"
+                               }
+                           ]
+                        }
+                    """
             ))
         .andExpect(status().isOk())
         .andExpect(content().string("更新処理が成功しました。"));

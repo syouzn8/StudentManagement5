@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="raisetech5.StudentManagement5.repository.StudentRepositoryTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2024-11-11T11:58:00" hostname="OWNER-PC" time="1.88">
+<testsuite name="raisetech5.StudentManagement5.repository.StudentRepositoryTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-12-02T07:47:48" hostname="OWNER-PC" time="1.748">
   <properties/>
-  <testcase name="受講生の全件検索が行えること()" classname="raisetech5.StudentManagement5.repository.StudentRepositoryTest" time="1.88">
-    <failure message="org.opentest4j.AssertionFailedError: &#13;&#10;expected: 5&#13;&#10; but was: 0" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: 
-expected: 5
- but was: 0
-	at java.base@21.0.3/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-	at java.base@21.0.3/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-	at app//raisetech5.StudentManagement5.repository.StudentRepositoryTest.受講生の全件検索が行えること(StudentRepositoryTest.java:21)
-	at java.base@21.0.3/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base@21.0.3/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at java.base@21.0.3/java.util.ArrayList.forEach(ArrayList.java:1596)
-</failure>
-  </testcase>
-  <system-out><![CDATA[20:57:56.918 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [raisetech5.StudentManagement5.repository.StudentRepositoryTest]: StudentRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-20:57:57.242 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration raisetech5.StudentManagement5.StudentManagement5Application for test class raisetech5.StudentManagement5.repository.StudentRepositoryTest
+  <testcase name="testConvertStudentDetails()" classname="raisetech5.StudentManagement5.repository.StudentRepositoryTest" time="1.748"/>
+  <system-out><![CDATA[16:47:44.623 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [raisetech5.StudentManagement5.repository.StudentRepositoryTest]: StudentRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+16:47:45.006 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration raisetech5.StudentManagement5.StudentManagement5Application for test class raisetech5.StudentManagement5.repository.StudentRepositoryTest
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -25,11 +14,11 @@ expected: 5
 
  :: Spring Boot ::                (v3.3.1)
 
-2024-11-11T20:57:58.091+09:00  INFO 12864 --- [StudentManagement5] [    Test worker] r.S.repository.StudentRepositoryTest     : Starting StudentRepositoryTest using Java 21.0.3 with PID 12864 (started by Owner in C:\Users\Owner\Downloads\StudentManagement5\StudentManagement5)
-2024-11-11T20:57:58.094+09:00  INFO 12864 --- [StudentManagement5] [    Test worker] r.S.repository.StudentRepositoryTest     : No active profile set, falling back to 1 default profile: "default"
-2024-11-11T20:57:59.215+09:00  INFO 12864 --- [StudentManagement5] [    Test worker] beddedDataSourceBeanFactoryPostProcessor : Replacing 'dataSource' DataSource bean with embedded version
-2024-11-11T20:57:59.667+09:00  INFO 12864 --- [StudentManagement5] [    Test worker] o.s.j.d.e.EmbeddedDatabaseFactory        : Starting embedded database: url='jdbc:h2:mem:353b79bf-2782-4020-8fca-209f5ceb3d99;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
-2024-11-11T20:58:00.461+09:00  INFO 12864 --- [StudentManagement5] [    Test worker] r.S.repository.StudentRepositoryTest     : Started StudentRepositoryTest in 3.039 seconds (process running for 5.365)
+2024-12-02T16:47:45.863+09:00  INFO 7544 --- [StudentManagement5] [    Test worker] r.S.repository.StudentRepositoryTest     : Starting StudentRepositoryTest using Java 21.0.3 with PID 7544 (started by Owner in C:\Users\Owner\Downloads\StudentManagement5\StudentManagement5)
+2024-12-02T16:47:45.863+09:00  INFO 7544 --- [StudentManagement5] [    Test worker] r.S.repository.StudentRepositoryTest     : No active profile set, falling back to 1 default profile: "default"
+2024-12-02T16:47:46.929+09:00  INFO 7544 --- [StudentManagement5] [    Test worker] beddedDataSourceBeanFactoryPostProcessor : Replacing 'dataSource' DataSource bean with embedded version
+2024-12-02T16:47:47.379+09:00  INFO 7544 --- [StudentManagement5] [    Test worker] o.s.j.d.e.EmbeddedDatabaseFactory        : Starting embedded database: url='jdbc:h2:mem:c60489ca-20bb-4f3a-b2fb-9a69287a9a34;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2024-12-02T16:47:48.244+09:00  INFO 7544 --- [StudentManagement5] [    Test worker] r.S.repository.StudentRepositoryTest     : Started StudentRepositoryTest in 3.04 seconds (process running for 5.97)
 ]]></system-out>
   <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (C:\Users\Owner\Downloads\-8.8-bin\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.14.17\e3c251a39dc90badaf71c83427ba46840f219d8d\byte-buddy-agent-1.14.17.jar)
 WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning

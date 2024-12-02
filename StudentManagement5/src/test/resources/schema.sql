@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS students
 (
-  id int NOT NULL AUTO_INCREMENT,
+  id int AUTO_INCREMENT,
   name varchar(255) NOT NULL,
   nickname varchar(100) DEFAULT NULL,
   email varchar(255) NOT NULL,
@@ -14,8 +14,8 @@ CREATE TABLE IF NOT EXISTS students
 
 CREATE TABLE IF NOT EXISTS students_courses
 (
-  id int NOT NULL AUTO_INCREMENT,
-  student_id varchar(1000) DEFAULT NULL,
+  id int AUTO_INCREMENT,
+  student_id INT DEFAULT NULL,
   coursName varchar(100) DEFAULT NULL,
   start_date datetime DEFAULT NULL,
   end_date datetime DEFAULT NULL

@@ -16,4 +16,6 @@ public class StudentCourse {
   private LocalDateTime start_date;
   private LocalDateTime end_date;
 
-}
+
+  }
+

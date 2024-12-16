@@ -79,7 +79,7 @@ public class StudentService {
   private void initStudentsCourse(StudentCourse studentCourse, Student student) {
     LocalDateTime now = LocalDateTime.now();
 
-    studentCourse.setStudent_id(student.getId());
+    studentCourse.setStudentId(student.getId());
     studentCourse.setStart_date(now);
     studentCourse.setEnd_date(now.plusYears(1));
   }

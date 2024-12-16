@@ -2,27 +2,18 @@ package raisetech5.StudentManagement5.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
+import java.util.Optional;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.annotation.Commit;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import raisetech5.StudentManagement5.controller.converter.StudentConverter;
 import raisetech5.StudentManagement5.data.Student;
 import raisetech5.StudentManagement5.data.StudentCourse;
 import raisetech5.StudentManagement5.domain.StudentDetail;
-import raisetech5.StudentManagement5.service.StudentService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 
 @MybatisTest
@@ -62,25 +53,18 @@ class StudentRepositoryTest {
   @Test
   void 受講生が検索できること() {
 
-    Student expected = new Student();
-    expected.setId("1");
-    expected.setName("榎並浩二");
-    expected.setNickname("エナミ");
-    expected.setEmail("test@example.com");
-    expected.setTown("奈良県");
-    expected.setGender("男性");
-    expected.setAge(38);
-    expected.setFurigana("エナミコウジ");
-    expected.setRemark("");
-    expected.setDeleted(false);
+    Student expected = new Student(
+        "1", "榎並浩二", "エナミ", "test@example.com", "奈良県",
+        "男性", 38, "エナミコウジ", "", false
+    );
 
     sut.registerStudent(expected);
-    String studentId = expected.getId();
 
-    Student actual = sut.searchStudent(studentId);
+    Student actual = sut.searchStudent("1");
 
     assertThat(actual).isEqualTo(expected);
   }
+
 
 
   @Test
@@ -113,7 +97,7 @@ class StudentRepositoryTest {
     String studentId = student.getId();
 
     StudentCourse studentCourse = new StudentCourse();
-    studentCourse.setStudent_id(studentId);
+    studentCourse.setStudentId(studentId);
     studentCourse.setCoursName("Math");
 
     sut.registerStudentCourse(studentCourse);
@@ -165,17 +149,17 @@ class StudentRepositoryTest {
 
     StudentCourse course1 = new StudentCourse();
     course1.setId("1");
-    course1.setStudent_id("1");
+    course1.setStudentId("1");
     course1.setCoursName("Math");
 
     StudentCourse course2 = new StudentCourse();
     course2.setId("2");
-    course2.setStudent_id("2");
+    course2.setStudentId("2");
     course2.setCoursName("Science");
 
     StudentCourse course3 = new StudentCourse();
     course3.setId("3");
-    course3.setStudent_id("1");
+    course3.setStudentId("1");
     course3.setCoursName("History");
 
     List<StudentCourse> courses = List.of(course1, course2, course3);

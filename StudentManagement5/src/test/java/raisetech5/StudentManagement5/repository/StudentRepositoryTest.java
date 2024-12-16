@@ -62,30 +62,26 @@ class StudentRepositoryTest {
   @Test
   void 受講生が検索できること() {
 
-    Student student = new Student();
-    student.setName("榎並浩二");
-    student.setFurigana("エナミコウジ");
-    student.setNickname("エナミ");
-    student.setEmail("test@example.com");
-    student.setTown("奈良県");
-    student.setGender("男性");
-    student.setAge(38);
-    student.setRemark("");
-    student.setDeleted(false);
+    Student expected = new Student();
+    expected.setId("1");
+    expected.setName("榎並浩二");
+    expected.setNickname("エナミ");
+    expected.setEmail("test@example.com");
+    expected.setTown("奈良県");
+    expected.setGender("男性");
+    expected.setAge(38);
+    expected.setFurigana("エナミコウジ");
+    expected.setRemark("");
+    expected.setDeleted(false);
 
-    sut.registerStudent(student);
-    String studentId = student.getId();
+    sut.registerStudent(expected);
+    String studentId = expected.getId();
 
     Student actual = sut.searchStudent(studentId);
 
-    assertThat(actual).isNotNull();
-    assertThat(actual.getName()).isEqualTo("榎並浩二");
-    assertThat(actual.getFurigana()).isEqualTo("エナミコウジ");
-    assertThat(actual.getEmail()).isEqualTo("test@example.com");
-    assertThat(actual.getTown()).isEqualTo("奈良県");
-    assertThat(actual.getGender()).isEqualTo("男性");
-    assertThat(actual.getAge()).isEqualTo(38);
+    assertThat(actual).isEqualTo(expected);
   }
+
 
   @Test
   void 受講生コースの全件検索ができること() {
@@ -132,7 +128,7 @@ class StudentRepositoryTest {
   }
 
   @Test
-  void 受講生を更新します() {
+  void 受講生を更新できること() {
 
     Student student = new Student();
     student.setId(String.valueOf(1001));
@@ -155,7 +151,7 @@ class StudentRepositoryTest {
 
 
   @Test
-  void 受講生コース情報のコース名を更新します() {
+  void 受講生コース情報のコース名を更新できること() {
 
     Student student1 = new Student();
     student1.setId("1");
@@ -192,8 +188,3 @@ class StudentRepositoryTest {
     assertEquals(1, result.get(1).getStudentCourseList().size());
   }
 }
-
-
-
-
-

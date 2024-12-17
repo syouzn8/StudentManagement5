@@ -37,17 +37,17 @@ public class StudentConverterTest {
     StudentCourse course1 = new StudentCourse();
     course1.setId(String.valueOf(1L));
     course1.setCoursName("Math");
-    course1.setStudent_id(String.valueOf(1L));
+    course1.setStudentId(String.valueOf(1L));
 
     StudentCourse course2 = new StudentCourse();
     course2.setId(String.valueOf(2L));
     course2.setCoursName("Science");
-    course2.setStudent_id(String.valueOf(1L));
+    course2.setStudentId(String.valueOf(1L));
 
     StudentCourse course3 = new StudentCourse();
     course3.setId(String.valueOf(3L));
     course3.setCoursName("History");
-    course3.setStudent_id(String.valueOf(2L));
+    course3.setStudentId(String.valueOf(2L));
 
     List<Student> studentList = Arrays.asList(student1, student2);
     List<StudentCourse> studentCourseList = Arrays.asList(course1, course2, course3);

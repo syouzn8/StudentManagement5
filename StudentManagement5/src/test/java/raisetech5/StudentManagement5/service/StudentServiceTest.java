@@ -10,18 +10,12 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
-import raisetech5.StudentManagement5.controller.StudentController;
 import raisetech5.StudentManagement5.controller.converter.StudentConverter;
 import raisetech5.StudentManagement5.data.Student;
 import raisetech5.StudentManagement5.data.StudentCourse;
@@ -75,10 +69,10 @@ class StudentServiceTest {
     student.setName("佐野太郎");
 
     StudentCourse course1 = new StudentCourse();
-    course1.setStudent_id(String.valueOf(101L));
+    course1.setStudentId(String.valueOf(101L));
 
     StudentCourse course2 = new StudentCourse();
-    course2.setStudent_id(String.valueOf(102L));
+    course2.setStudentId(String.valueOf(102L));
 
     StudentDetail studentDetail = new StudentDetail();
     studentDetail.setStudent(student);

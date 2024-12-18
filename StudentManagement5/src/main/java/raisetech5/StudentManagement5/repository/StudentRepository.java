@@ -4,12 +4,16 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import java.util.List;
+import java.util.Optional;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import raisetech5.StudentManagement5.data.ApplicationStatus;
 import raisetech5.StudentManagement5.data.Student;
 import raisetech5.StudentManagement5.data.StudentCourse;
 
@@ -79,17 +83,19 @@ public interface StudentRepository {
    */
   void updateStudentCourse(StudentCourse studentCourse);
 
-
-  @Select("SELECT * FROM students WHERE id = #{id}")//
+  @Select("SELECT * FROM students WHERE id = #{id}")
   Student findById(int id);
 
 
+  //課題
+  @Select("SELECT * FROM application_statuses WHERE course_info_id = #{courseInfoId}")
+  ApplicationStatus findByCourseInfoId(Long courseInfoId);
 
+  @Insert("INSERT INTO application_statuses (course_info_id, status, created_at, updated_at) " +
+      "VALUES (#{courseInfoId}, #{status}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)")
+  void saveApplicationStatus(ApplicationStatus applicationStatus);
 
-
-
-
-
-
+  @Update("UPDATE application_statuses SET status = #{status}, updated_at = CURRENT_TIMESTAMP " +
+      "WHERE id = #{id}")
+  void updateApplicationStatus(ApplicationStatus applicationStatus);
 }
-

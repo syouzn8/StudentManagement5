@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import raisetech5.StudentManagement5.controller.converter.StudentConverter;
+import raisetech5.StudentManagement5.data.ApplicationStatus;
 import raisetech5.StudentManagement5.domain.StudentDetail;
 import raisetech5.StudentManagement5.repository.StudentRepository;
 import raisetech5.StudentManagement5.data.Student;
@@ -96,5 +97,22 @@ public class StudentService {
         .forEach(studentCourse -> repository.updateStudentCourse(studentCourse));
   }
 
+//課題
 
+
+  public ApplicationStatus searchApplicationStatus(Long courseInfoId) {
+    return repository.findByCourseInfoId(courseInfoId);
+  }
+
+  @Transactional
+  public ApplicationStatus registerApplicationStatus(ApplicationStatus applicationStatus) {
+    repository.saveApplicationStatus(applicationStatus);
+    return applicationStatus;
+  }
+
+  @Transactional
+  public void updateApplicationStatus(ApplicationStatus applicationStatus) {
+    repository.updateApplicationStatus(applicationStatus);
+  }
 }
+

@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import raisetech5.StudentManagement5.controller.converter.StudentConverter;
+import raisetech5.StudentManagement5.data.ApplicationStatus;
 import raisetech5.StudentManagement5.domain.StudentDetail;
 import raisetech5.StudentManagement5.repository.StudentRepository;
 import raisetech5.StudentManagement5.data.Student;
 import raisetech5.StudentManagement5.data.StudentCourse;
+
 
 /**
  * 受講生情報をとり扱うさーびすです。 受講生の検索や登録・更新処理を行います。
@@ -96,5 +98,26 @@ public class StudentService {
         .forEach(studentCourse -> repository.updateStudentCourse(studentCourse));
   }
 
+//課題
 
+
+  public ApplicationStatus searchApplicationStatus(Long courseInfoId) {
+    return repository.findByCourseInfoId(courseInfoId);
+  }
+
+  @Transactional
+  public ApplicationStatus registerApplicationStatus(ApplicationStatus applicationStatus) {
+    repository.saveApplicationStatus(applicationStatus);
+    return applicationStatus;
+  }
+
+  @Transactional
+  public void updateApplicationStatus(ApplicationStatus applicationStatus) {
+    repository.updateApplicationStatus(applicationStatus);
+  }
+
+  public List<Student> searchStudents(String name, String town, Integer age) {
+    return repository.searchStudents(name, town, age);
+  }
 }
+

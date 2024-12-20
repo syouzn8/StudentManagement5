@@ -12,6 +12,7 @@ import raisetech5.StudentManagement5.repository.StudentRepository;
 import raisetech5.StudentManagement5.data.Student;
 import raisetech5.StudentManagement5.data.StudentCourse;
 
+
 /**
  * 受講生情報をとり扱うさーびすです。 受講生の検索や登録・更新処理を行います。
  */
@@ -113,6 +114,10 @@ public class StudentService {
   @Transactional
   public void updateApplicationStatus(ApplicationStatus applicationStatus) {
     repository.updateApplicationStatus(applicationStatus);
+  }
+
+  public List<Student> searchStudents(String name, String town, Integer age) {
+    return repository.searchStudents(name, town, age);
   }
 }
 

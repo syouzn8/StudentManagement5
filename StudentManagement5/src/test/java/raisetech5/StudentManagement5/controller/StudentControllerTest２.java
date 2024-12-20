@@ -1,6 +1,5 @@
 package raisetech5.StudentManagement5.controller;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -9,8 +8,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+
+import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -19,6 +19,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import raisetech5.StudentManagement5.data.ApplicationStatus;
+import raisetech5.StudentManagement5.data.Student;
 import raisetech5.StudentManagement5.service.StudentService;
 
 @SpringBootTest
@@ -75,4 +76,30 @@ class StudentControllerTest２ {
         .andExpect(status().isOk())
         .andExpect(content().string("申込状況の更新が成功しました。"));
   }
+
+  @Test
+  void 検索条件なしで全ての受講生を取得できること() throws Exception {
+
+    Student student1 = new Student();
+    student1.setId(String.valueOf(1L));
+    student1.setName("John Doe");
+    student1.setTown("Tokyo");
+    student1.setAge(25);
+
+    Student student2 = new Student();
+    student2.setId(String.valueOf(2L));
+    student2.setName("Jane Doe");
+    student2.setTown("Osaka");
+    student2.setAge(22);
+
+    when(service.searchStudents(null, null, null))
+        .thenReturn(Arrays.asList(student1, student2));
+
+    mockMvc.perform(get("/students/search"))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$[0].name").value("John Doe"))
+        .andExpect(jsonPath("$[1].name").value("Jane Doe"));
+  }
+
+
 }

@@ -1,21 +1,15 @@
 package raisetech5.StudentManagement5.repository;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 import java.util.List;
-import java.util.Optional;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 import raisetech5.StudentManagement5.data.ApplicationStatus;
 import raisetech5.StudentManagement5.data.Student;
 import raisetech5.StudentManagement5.data.StudentCourse;
+
 
 /**
  * 受講生テーブルと受講生コース情報テーブルと紐づくRepositoryです。
@@ -98,4 +92,19 @@ public interface StudentRepository {
   @Update("UPDATE application_statuses SET status = #{status}, updated_at = CURRENT_TIMESTAMP " +
       "WHERE id = #{id}")
   void updateApplicationStatus(ApplicationStatus applicationStatus);
+
+  @Select("<script>" +
+      "SELECT * FROM students " +
+      "<where>" +
+      "   <if test='name != null and name != \"\"'>AND name = #{name}</if>" +
+      "   <if test='town != null and town != \"\"'>AND town = #{town}</if>" +
+      "   <if test='age != null'>AND age = #{age}</if>" +
+      "</where>" +
+      "</script>")
+  List<Student> searchStudents(@Param("name") String name,
+      @Param("town") String town,
+      @Param("age") Integer age);
 }
+
+
+

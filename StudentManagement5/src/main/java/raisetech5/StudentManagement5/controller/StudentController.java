@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import raisetech5.StudentManagement5.data.ApplicationStatus;
+import raisetech5.StudentManagement5.data.Student;
 import raisetech5.StudentManagement5.domain.StudentDetail;
 import raisetech5.StudentManagement5.exception.TestException;
 import raisetech5.StudentManagement5.service.StudentService;
@@ -122,5 +124,13 @@ public class StudentController {
     applicationStatus.setId(Long.parseLong(id));
     service.updateApplicationStatus(applicationStatus);
     return ResponseEntity.ok("申込状況の更新が成功しました。");
+  }
+
+  @GetMapping("/students/search")
+  public List<Student> searchStudents(
+      @RequestParam(required = false) String name,
+      @RequestParam(required = false) String town,
+      @RequestParam(required = false) Integer age) {
+    return service.searchStudents(name, town, age);
   }
 }

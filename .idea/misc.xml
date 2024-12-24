@@ -15,6 +15,7 @@
       <item index="10" class="java.lang.String" itemvalue="org.springframework.web.bind.annotation.PutMapping" />
     </list>
     <writeAnnotations>
+      <writeAnnotation name="com.fasterxml.jackson.databind.annotation.JsonDeserialize" />
       <writeAnnotation name="jakarta.persistence.Column" />
       <writeAnnotation name="org.springframework.beans.factory.annotation.Autowired" />
       <writeAnnotation name="org.springframework.boot.test.mock.mockito.MockBean" />

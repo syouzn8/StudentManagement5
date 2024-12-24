@@ -1,7 +1,10 @@
 package raisetech5.StudentManagement5.service;
 
+import jakarta.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,7 +15,6 @@ import raisetech5.StudentManagement5.repository.StudentRepository;
 import raisetech5.StudentManagement5.data.Student;
 import raisetech5.StudentManagement5.data.StudentCourse;
 
-
 /**
  * 受講生情報をとり扱うさーびすです。 受講生の検索や登録・更新処理を行います。
  */
@@ -21,7 +23,6 @@ public class StudentService {
 
   private static StudentRepository repository;
   private StudentConverter converter;
-
 
   @Autowired
   public StudentService(StudentRepository repository, StudentConverter converter) {
@@ -111,13 +112,29 @@ public class StudentService {
     return applicationStatus;
   }
 
-  @Transactional
   public void updateApplicationStatus(ApplicationStatus applicationStatus) {
+
+    if (!repository.existsById(applicationStatus.getId())) {
+      throw new EntityNotFoundException("Application status not found for ID: " + applicationStatus.getId());
+    }
+
+
     repository.updateApplicationStatus(applicationStatus);
   }
-
   public List<Student> searchStudents(String name, String town, Integer age) {
-    return repository.searchStudents(name, town, age);
+    List<Student> students = repository.findAllStudents();
+
+    return students.stream()
+        .filter(student -> name == null || student.getName().contains(name))
+        .filter(student -> town == null || student.getTown().contains(town))
+        .filter(student -> age == null || student.getAge() == age)
+        .collect(Collectors.toList());
   }
-}
+  }
+
+
+
+
+
+
 

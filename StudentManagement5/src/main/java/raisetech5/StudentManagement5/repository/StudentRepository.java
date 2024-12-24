@@ -104,7 +104,19 @@ public interface StudentRepository {
   List<Student> searchStudents(@Param("name") String name,
       @Param("town") String town,
       @Param("age") Integer age);
+
+
+
+  @Select("SELECT COUNT(*) > 0 FROM application_status WHERE id = #{id}")
+  boolean existsById(@Param("id") Long id);
+
+
+@Select("SELECT * FROM students")
+List<Student> findAllStudents();
 }
+
+
+
 
 
 

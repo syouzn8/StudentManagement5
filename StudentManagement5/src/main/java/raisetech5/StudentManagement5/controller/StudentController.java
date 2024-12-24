@@ -121,12 +121,14 @@ public class StudentController {
   public ResponseEntity<String> updateApplicationStatus(
       @PathVariable @NotBlank @Pattern(regexp = "^\\d+$") String id,
       @RequestBody @Valid ApplicationStatus applicationStatus) {
+
     applicationStatus.setId(Long.parseLong(id));
     service.updateApplicationStatus(applicationStatus);
     return ResponseEntity.ok("申込状況の更新が成功しました。");
   }
 
-  @GetMapping("/students/search")
+
+  @GetMapping("/students")
   public List<Student> searchStudents(
       @RequestParam(required = false) String name,
       @RequestParam(required = false) String town,

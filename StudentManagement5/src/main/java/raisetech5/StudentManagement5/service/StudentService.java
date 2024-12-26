@@ -122,13 +122,7 @@ public class StudentService {
     repository.updateApplicationStatus(applicationStatus);
   }
   public List<Student> searchStudents(String name, String town, Integer age) {
-    List<Student> students = repository.findAllStudents();
-
-    return students.stream()
-        .filter(student -> name == null || student.getName().contains(name))
-        .filter(student -> town == null || student.getTown().contains(town))
-        .filter(student -> age == null || student.getAge() == age)
-        .collect(Collectors.toList());
+    return repository.searchStudents(name, town, age);
   }
   }
 

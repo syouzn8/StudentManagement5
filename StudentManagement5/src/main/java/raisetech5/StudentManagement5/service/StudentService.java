@@ -118,17 +118,10 @@ public class StudentService {
       throw new EntityNotFoundException("Application status not found for ID: " + applicationStatus.getId());
     }
 
-
     repository.updateApplicationStatus(applicationStatus);
   }
+
   public List<Student> searchStudents(String name, String town, Integer age) {
     return repository.searchStudents(name, town, age);
   }
-  }
-
-
-
-
-
-
-
+}

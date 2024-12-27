@@ -11,10 +11,5 @@ public class StudentManagement5Application {
 
   public static void main(String[] args) {
     SpringApplication.run(StudentManagement5Application.class, args);
-
-
   }
-
-
-
 }

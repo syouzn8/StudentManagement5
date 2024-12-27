@@ -22,4 +22,3 @@ VALUES
 (8, 'completed'),
 (9, 'tentative application'),
 (13, 'confirmed application');
-

@@ -14,4 +14,3 @@ public class StatusTypeDeserializer extends JsonDeserializer<StatusType> {
     return StatusType.fromString(value);
   }
 }
-

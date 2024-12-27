@@ -119,5 +119,4 @@ public class StudentControllerTest２ {
         .andExpect(jsonPath("$").isArray())
         .andExpect(jsonPath("$", hasSize(1)));
   }
-
 }

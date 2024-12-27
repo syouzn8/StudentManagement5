@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="EntryPointsManager">
-    <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest" />
-      <item index="1" class="java.lang.String" itemvalue="org.springframework.web.bind.annotation.ExceptionHandler" />
-      <item index="2" class="java.lang.String" itemvalue="org.springframework.web.bind.annotation.GetMapping" />
-      <item index="3" class="java.lang.String" itemvalue="org.springframework.web.bind.annotation.PostMapping" />
-      <item index="4" class="java.lang.String" itemvalue="org.springframework.web.bind.annotation.PutMapping" />
+    <list size="11">
+      <item index="0" class="java.lang.String" itemvalue="jakarta.persistence.Column" />
+      <item index="1" class="java.lang.String" itemvalue="jakarta.persistence.PrePersist" />
+      <item index="2" class="java.lang.String" itemvalue="jakarta.persistence.PreUpdate" />
+      <item index="3" class="java.lang.String" itemvalue="org.apache.ibatis.annotations.Insert" />
+      <item index="4" class="java.lang.String" itemvalue="org.apache.ibatis.annotations.Select" />
+      <item index="5" class="java.lang.String" itemvalue="org.apache.ibatis.annotations.Update" />
+      <item index="6" class="java.lang.String" itemvalue="org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest" />
+      <item index="7" class="java.lang.String" itemvalue="org.springframework.web.bind.annotation.ExceptionHandler" />
+      <item index="8" class="java.lang.String" itemvalue="org.springframework.web.bind.annotation.GetMapping" />
+      <item index="9" class="java.lang.String" itemvalue="org.springframework.web.bind.annotation.PostMapping" />
+      <item index="10" class="java.lang.String" itemvalue="org.springframework.web.bind.annotation.PutMapping" />
     </list>
     <writeAnnotations>
+      <writeAnnotation name="com.fasterxml.jackson.databind.annotation.JsonDeserialize" />
+      <writeAnnotation name="jakarta.persistence.Column" />
       <writeAnnotation name="org.springframework.beans.factory.annotation.Autowired" />
       <writeAnnotation name="org.springframework.boot.test.mock.mockito.MockBean" />
     </writeAnnotations>

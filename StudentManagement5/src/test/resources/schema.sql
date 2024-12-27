@@ -20,3 +20,11 @@ CREATE TABLE IF NOT EXISTS students_courses
   start_date datetime DEFAULT NULL,
   end_date datetime DEFAULT NULL
 );
+
+CREATE TABLE `application_statuses` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `course_info_id` int NOT NULL,
+  `status` varchar(30) NOT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  );
